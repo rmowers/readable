@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>Add a Book</title>
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+            <h1 class="header">Readable</h1>
+            <div class="sub-nav">
+                <p class="welcome">Hi, {{user.first_name}}.</p> | <a href="/dashboard">Home</a> | <a href="/">Log Out</a>
+            </div>
+        </div>
+        <div class="body">
+        {% with messages = get_flashed_messages(category_filter=['add_book']) %}
+            {% if messages %}
+                {% for message in messages %}
+                <p>{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <h2>Add a Book</h2>
+            <form action="/create/book" method="POST">
+                <p class="piece-label">Book Title</p><input class="piece-input" type="text" name="title">
+                <p class="piece-label">Book Author</p><input class="piece-input" type="text" name="author">
+                <p class="piece-label">Summary</p><textarea class="piece-input" name="summary" cols="95" rows="5" value="summary" placeholder="Describe your painting here..."></textarea>
+                <p class="piece-label">Genre</p><input class="piece-input" type="text" name="genre">
+                <p class="piece-label">Started</p><input class="piece-input" type="date" name="started">
+                <p class="piece-label">Finished</p><input class="piece-input" type="date" name="finished">
+                <input class="button" type="Submit" value="Add">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

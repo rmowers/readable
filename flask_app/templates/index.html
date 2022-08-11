@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>Readable</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="header">Readable</h1>
+        <div class="maincontent">
+            <div class="left">
+                <h2 class="header">Sign Up!</h2>
+                <form action="/register", method="POST">
+                    <div class="flash">
+                    {% with messages = get_flashed_messages(category_filter=['register']) %}
+                {% if messages %}
+                    <strong>OH NO!!!!</strong>
+                        {% for message in messages %}
+                        <p>{{message}}</p>
+                        {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                    </div>
+                    <p>First Name</p><input type="text" name="first_name">
+                    <p>Last Name</p><input type="text" name="last_name">
+                    <p>Email</p><input type="text" name="email">
+                    <p>Password</p><input type="password" name="password">
+                    <p>Confirm Password</p><input type="password" name="confirm_password">
+                    <div class="select-align">
+                        <input name="agree" type="checkbox"><p class="agree">I agree to be nice to everyone on Readable</p>
+                    </div>
+                    <input class="button" type="Submit" value="Join">
+                </form>
+            </div>
+            <div class="right">
+                <h2 class="header">Log In!</h2>
+                <form action="/login", method="POST">
+                    <div class="flash">
+                        {% with messages = get_flashed_messages(category_filter=['login']) %}
+                    {% if messages %}
+                        <strong>OH NO!!!!</strong>
+                            {% for message in messages %}
+                            <p>{{message}}</p>
+                            {% endfor %}
+                            {% endif %}
+                            {% endwith %}
+                    </div>
+                    <p>Email</p><input type="text" name="email">
+                    <p>Password</p><input type="password" name="password">
+                    <input class="button" type="Submit" value="Log In">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

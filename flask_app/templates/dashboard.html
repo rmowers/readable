@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>Dashboard</title>
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+            <h1 class="header">Readable</h1>
+            <div class="sub-nav">
+                <p class="welcome">Hi, {{user.first_name}}.</p>
+                <div class="nav-actions">
+                    <a href="/new">Add Book</a> | <a href="/">Log Out</a>
+                </div>
+            </div>
+        </div>
+        {% with messages = get_flashed_messages(category_filter=['post_action']) %}
+            {% if messages %}
+                {% for message in messages %}
+                <p>{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <div class="body">
+            <h2 class="sub-header">Books</h2>
+            {% for work in books %}
+            <div class="post-container">
+                <h3 class="post-title"><a class="post-body" href="/book/work/{{work.id}}">{{work.title}}</a></h3>
+                <p>Added by {{work.reader}}</p>
+                <div class="post-actions">
+                    {% if session["user_id"] == work.user_id %}
+                    <a href="/delete/book/{{work.id}}">Delete</a> |
+                    <a href="/book/work/{{work.id}}/edit">Edit</a> 
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
