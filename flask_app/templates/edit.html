@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-    <title>AEdit Book</title>
+    <title>Edit Book</title>
 </head>
 <body>
     <div class="container">
@@ -24,10 +24,10 @@
             {% endif %}
         {% endwith %}
         <h2>Edit Your Book</h2>
-            <form action="/update/book" method="POST">
+            <form action="/update/book/{{book.id}}" method="POST">
                 <p class="piece-label">Book Title</p><input class="piece-input" type="text" name="title" value="{{book.title}}">
                 <p class="piece-label">Book Author</p><input class="piece-input" type="text" name="author" value="{{book.author}}">
-                <p class="piece-label">Summary</p><textarea class="piece-input" name="summary" cols="95" rows="5" placeholder="{{book.summary}}"></textarea>
+                <p class="piece-label">Summary</p><textarea class="piece-input" name="summary" cols="95" rows="5" placeholder="">{{book.summary}}</textarea>
                 <p class="piece-label">Genre</p><input class="piece-input" type="text" name="genre" value="{{book.genre}}">
                 <p class="piece-label">Started</p><input class="piece-input" type="text" name="started" value="{{book.started}}">
                 <p class="piece-label">Finished</p><input class="piece-input" type="text" name="finished" value="{{book.finished}}">

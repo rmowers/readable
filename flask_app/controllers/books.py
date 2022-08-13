@@ -31,13 +31,14 @@ def create_book():
     return redirect("/dashboard")
 
 
-@app.route("/update/book", methods=["POST"])
-def update_book():
+@app.route("/update/book/<int:id>", methods=["POST"])
+def update_book(id):
     if "user_id" not in session:
         return redirect("/")
     if not book.Book.validate_book(request.form):
         return redirect("/new")
     data = {
+        "id" : id,
         "title" : request.form["title"],
         "author" : request.form["author"],
         "summary" : request.form["summary"],
