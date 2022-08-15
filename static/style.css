@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0px;
+    font-family: monospace;
+    color: rgb(85, 63, 61);
+    border-radius: 10px;
+}
+
+body {
+    background-image: url("background.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.container {
+    margin: 0 auto;
+    margin-top: 10px;
+    width: 800px;
+    padding: 10px;
+    background-color: rgb(168, 195, 163, .85);
+}
+
+/* .header {
+    margin-bottom: 10px;
+} */
+
+.maincontent {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+/* input {
+    margin: 5px;
+} */
+
+.select-align {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+
+.agree {
+    margin: 10px 10px 0px 5px;
+    font-size: 10px;
+    width: 200px;
+    word-wrap: normal;
+}
+
+.button {
+    margin-top: 5px;
+    display: block;
+    padding: 5px;
+    justify-content: right;
+    background-color: white;
+}
+
+
+.nav {
+    display: flex;
+    width: 780px;
+    padding: 10px;
+    margin: 0px;
+    justify-content:space-between;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+}
+
+.nav-actions {
+    display: flex;
+}
+
+.welcome {
+    padding-right: 5px;
+}
+
+.sub-nav {
+    display: flex;
+}
+
+.sub-nav a {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.body {
+    margin: 10px;
+    padding: 10px;
+    width: 750px;
+}
+
+.account-body {
+    display: flex;
+    justify-content: space-around;
+    width: 800px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.piece-body {
+    display: block;
+    justify-content: space-around;
+    width: 800px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.sub-account-left{
+    width: 500px;
+}
+
+.book-card {
+    border: solid white 2px;
+    background-color: white;
+    display: block;
+    align-items: center;
+    justify-content:flex-start;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.book-info {
+    padding: 5px;
+    margin-left: 5px;
+}
+.piece-container {
+    display: flex;
+    padding: 10px;
+}
+
+.post-body {
+    padding: 10px;
+}
+
+.book-actions {
+    display: flex;
+    padding: 5px;
+    margin-left: 5px;
+}
+.book-actions a {
+    padding: 0px 5px;
+}
+
+.sub-header {
+    margin-bottom: 10px;
+}
+
+.book-label {
+    padding: 3px;
+}
+
+.book-input {
+    margin-left: 10px;
+    padding: 5px;
+    border: rgb(85, 63, 61);
+    box-shadow: 2px 2px 2px;
+}
+
+.form-label {
+    padding: 3px;
+}
+
+.form-input {
+    margin-left: 10px;
+    padding: 5px;
+    border: rgb(85, 63, 61);
+    box-shadow: 2px 2px 2px;
+}

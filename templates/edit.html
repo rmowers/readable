@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>Edit Book</title>
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+            <h1 class="header">Readable.</h1>
+            <div class="sub-nav">
+                <p class="welcome">Hi, {{user.first_name}}.</p> <a href="/user/account">Account</a> | <a href="/dashboard">Home</a> | <a href="/logout">Log Out</a>
+            </div>
+        </div>
+        <div class="body">
+        {% with messages = get_flashed_messages(category_filter=['add_book']) %}
+            {% if messages %}
+                {% for message in messages %}
+                <p>{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <h2>Edit Your Book</h2>
+            <form action="/update/book/{{book.id}}" method="POST">
+                <p class="book-label">Book Title</p><input class="book-input" type="text" name="title" value="{{book.title}}">
+                <p class="book-label">Book Author</p><input class="book-input" type="text" name="author" value="{{book.author}}">
+                <p class="book-label">Summary</p><textarea class="book-input" name="summary" cols="90" rows="5" placeholder="">{{book.summary}}</textarea>
+                <p class="book-label">Genre</p><input class="book-input" type="text" name="genre" value="{{book.genre}}">
+                <p class="book-label">Started</p><input class="book-input" type="text" name="started" value="{{book.started}}">
+                <p class="book-label">Finished</p><input class="book-input" type="text" name="finished" value="{{book.finished}}">
+                <input class="button" type="Submit" value="Update">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

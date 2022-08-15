@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>Account</title>
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+            <h1 class="header">Readable.</h1>
+            <div class="sub-nav">
+                <p class="welcome">Hi, {{user.first_name}}.</p> | <a href="/dashboard">Home</a>| <a href="/new">Add Book</a> | <a href="/logout">Log Out</a>
+            </div>
+        </div>
+        {% with messages = get_flashed_messages(category_filter=['update_user']) %}
+            {% if messages %}
+                {% for message in messages %}
+                <p>{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <div class="account-body">
+            <div class="sub-account-right">
+                <h2 class="sub-header">Update User</h2>
+                <form action="/update/user" method="POST">
+                    <p class="form-label">First Name</p><input class="form-input" type="text" name="first_name" value={{user.first_name}}>
+                    <p class="form-label">Last Name</p><input class="form-input" type="text" name="last_name" value={{user.last_name}}>
+                    <p class="form-label">Email</p><input class="form-input" type="text" name="email" value={{user.email}}>
+                    <input class="button" type="Submit" value="Update">
+                </form>
+            </div>
+            <div class="sub-account-left">
+                <h2 class="sub-header">My Books</h2>
+                {% for book in books %}
+                <div class="book-card">
+                    <h3 class="book-title">{{book.title}} - {{book.author}}</h3>
+                    <p class="post-body">{{book.summary}}</p>
+                    <div class="book-actions">
+                        <a href="/delete/book/{{book.id}}">Delete</a> | 
+                        <a href="/book/work/{{book.id}}/edit">Edit</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>Book</title>
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+            <h1 class="header">Readable.</h1>
+            <div class="sub-nav">
+                <p class="welcome">Hi, {{user.first_name}}.</p>
+                <div class="nav-actions">
+                    <a href="/new">Add Book</a> | <a href="/dashboard">Home</a> | <a href="/logout">Log Out</a>
+                </div>
+            </div>
+        </div>
+        <div class="body">
+            <div class="book-card">
+                <div class="book-info">
+                    <h3 class="book-title">{{book.title}} - {{book.author}}</h3>
+                    <p>Added by {{book.reader.first_name}}</p>
+                </div>
+                        <p class="post-body">{{book.summary}}</p>
+                        <p class="post-body">Genre: {{book.genre}}</p>
+                    <div class="book-actions">
+                        <a href="/add/to/read/{{book.id}}">Add To Read List</a> | 
+                    <a href="/add/to/tbr/{{book.id}}">Add To Want To Read List</a>
+                        {% if session["user_id"] == book.user_id %}
+                        | <a href="/delete/book/{{book.id}}">Delete</a> |
+                        <a href="/book/book/{{book.id}}/edit">Edit</a> 
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
